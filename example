@@ -1,0 +1,36 @@
+
+In Adapter Class
+
+ holder.checkCB.setTag(position);
+        holder.checkCB.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                int position = (int) compoundButton.getTag();
+                horizontalList.get(position).isChecked = b;
+
+            }
+        });
+        
+        
+In  Pojo class
+
+public class SpecialData {
+    public String title;
+    public boolean checked;
+    public int id;
+}
+
+
+In Fragment of recyclerview
+
+On Button Click Listener:
+
+  for (int i = 0; i < specialDatas.size(); i++) {
+                    baseActivity.log("chceked>> " + specialDatas.get(i).id + "  " + specialDatas.get(i).checked);
+                    if (specialDatas.get(i).checked == true) {
+                        selectedID = selectedID + specialDatas.get(i).title + ",";
+                    }
+                }
+                if (selectedID.endsWith(",")) {
+                    selectedID = selectedID.substring(0, selectedID.lastIndexOf(","));
+                }
